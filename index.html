@@ -1,14 +1,180 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head> 
-<meta charset="UTF-8">
-<meta name = "viewport" content="width=device-width,initial-scale">
-<title> موقعي الاول</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفرق بين وسوم HTML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f8ff;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .explanation {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-right: 5px solid #2980b9;
+        }
+        .example-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .example-title {
+            color: #2980b9;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 8px;
+        }
+        .visual-guide {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            gap: 15px;
+        }
+        .tag-box {
+            width: 140px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        .h1-box { background-color: #e74c3c; color: white; font-size: 28px; }
+        .h2-box { background-color: #e67e22; color: white; font-size: 24px; }
+        .h3-box { background-color: #f1c40f; color: #333; font-size: 20px; }
+        .h4-box { background-color: #2ecc71; color: white; font-size: 18px; }
+        .h5-box { background-color: #3498db; color: white; font-size: 16px; }
+        .h6-box { background-color: #9b59b6; color: white; font-size: 14px; }
+        .p-box { background-color: #34495e; color: white; font-size: 16px; }
+        .code {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            direction: ltr;
+            text-align: left;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .note {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-right: 5px solid #ffc107;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-<!-- للتعليق مثل # في البايثون --> 
- <h1> موقعي الاول اسامة الهمالي </h1>
- <p> متابعة كل ماهو جديد وخاصة فيما يتعلق ببرامج الكمبيوتر</p>
+    <div class="container">
+        <h1>الفرق بين وسوم العناوين والفقرات في HTML</h1>
+        
+        <div class="explanation">
+            <h2>لماذا تتغير أماكن النصوص عند تغيير الوسوم؟</h2>
+            <p>وسوم HTML المختلفة لها خصائص تصيير افتراضية في المتصفحات تحدد:</p>
+            <ul>
+                <li>حجم الخط وسمكه</li>
+                <li>المسافات حول العنصر (الهامش والحشوة)</li>
+                <li>نوع العنصر (كتلة أو ضمني)</li>
+                <li>التسلسل الهرمي للعناوين</li>
+            </ul>
+        </div>
 
+        <div class="visual-guide">
+            <div class="tag-box h1-box">H1</div>
+            <div class="tag-box h2-box">H2</div>
+            <div class="tag-box h3-box">H3</div>
+            <div class="tag-box h4-box">H4</div>
+            <div class="tag-box h5-box">H5</div>
+            <div class="tag-box h6-box">H6</div>
+            <div class="tag-box p-box">P</div>
+        </div>
+
+        <div class="example-section">
+            <h3 class="example-title">مثال على العناوين من H1 إلى H6</h3>
+            <div class="code">
+                &lt;h1&gt;هذا عنوان رئيسي (H1)&lt;/h1&gt;<br>
+                &lt;h2&gt;هذا عنوان فرعي (H2)&lt;/h2&gt;<br>
+                &lt;h3&gt;هذا عنوان متوسط (H3)&lt;/h3&gt;<br>
+                &lt;h4&gt;هذا عنوان ثانوي (H4)&lt;/h4&gt;<br>
+                &lt;h5&gt;هذا عنوان صغير (H5)&lt;/h5&gt;<br>
+                &lt;h6&gt;هذا عنوان very صغير (H6)&lt;/h6&gt;
+            </div>
+            
+            <h1>هذا عنوان رئيسي (H1)</h1>
+            <h2>هذا عنوان فرعي (H2)</h2>
+            <h3>هذا عنوان متوسط (H3)</h3>
+            <h4>هذا عنوان ثانوي (H4)</h4>
+            <h5>هذا عنوان صغير (H5)</h5>
+            <h6>هذا عنوان very صغير (H6)</h6>
+        </div>
+
+        <div class="example-section">
+            <h3 class="example-title">مقارنة بين العناوين والفقرات</h3>
+            <div class="code">
+                &lt;h3&gt;هذا عنوان من المستوى الثالث&lt;/h3&gt;<br>
+                &lt;p&gt;هذه فقرة عادية. الفقرات تستخدم للنصوص الطويلة والمحتوى الأساسي.&lt;/p&gt;<br>
+                &lt;h3&gt;هذا عنوان آخر من المستوى الثالث&lt;/h3&gt;
+            </div>
+            
+            <h3>هذا عنوان من المستوى الثالث</h3>
+            <p>هذه فقرة عادية. الفقرات تستخدم للنصوص الطويلة والمحتوى الأساسي. لاحظ أن الفقرة تحتوي على مسافات أعلى وأسفل بشكل تلقائي، لكنها أقل من تلك الموجودة في العناوين.</p>
+            <h3>هذا عنوان آخر من المستوى الثالث</h3>
+        </div>
+
+        <div class="note">
+            <h3>ملاحظة هامة:</h3>
+            <p>وسوم مثل &lt;h1&gt; - &lt;h6&gt; هي عناصر كتلة (block) تأخذ العرض الكامل وتسبب فاصل سطر قبل وبعدها.</p>
+            <p>الوسوم &lt;p&gt; هي أيضا عناصر كتلة ولكن بمسافات وخصائص مختلفة.</p>
+            <p>لا يوجد وسم &lt;p1&gt; أو &lt;p2&gt; في HTML، فوسوم الفقرات هي &lt;p&gt; فقط.</p>
+        </div>
+
+        <div class="example-section">
+            <h3 class="example-title">كيفية التحكم في المظهر</h3>
+            <p>يمكنك استخدام CSS للتحكم في مظهر وسوم HTML لجعلها تظهر كما تريد:</p>
+            <div class="code">
+                h3 {<br>
+                &nbsp;&nbsp;margin: 10px 0;<br>
+                &nbsp;&nbsp;padding: 5px;<br>
+                &nbsp;&nbsp;background-color: #f0f0f0;<br>
+                &nbsp;&nbsp;border-right: 3px solid #3498db;<br>
+                }<br><br>
+                p {<br>
+                &nbsp;&nbsp;line-height: 1.6;<br>
+                &nbsp;&nbsp;margin: 15px 0;<br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        تم إنشاء هذا المثال لتوضيح الفروقات بين وسوم HTML
+    </footer>
 </body>
-<html>
+</html>
