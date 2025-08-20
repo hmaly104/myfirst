@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل خدمات مدينتي</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; direction: rtl; }
+        header { background: #3498db; color: white; padding: 20px; text-align: center; }
+        header h1 { margin: 0 0 10px 0; }
+        #searchContainer { margin-top: 10px; }
+        input { padding: 10px; width: 60%; margin-left: 10px; border-radius: 5px; border: none; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #2c80b4; color: white; cursor: pointer; }
+        #categories { display: flex; justify-content: space-around; margin: 20px 0; flex-wrap: wrap; gap: 10px; }
+        .category { padding: 20px; background: #f1f1f1; cursor: pointer; border-radius: 5px; flex: 1 0 120px; text-align: center; }
+        #featured { padding: 20px; background: #f9f9f9; }
+        #featured h2 { margin-top: 0; }
+        #featuredServices { display: flex; flex-wrap: wrap; gap: 10px; }
+        .serviceCard { border: 1px solid #ccc; padding: 10px; border-radius: 5px; width: 200px; background: white; }
+        #map { padding: 20px; }
+        #mapContainer { width: 100%; height: 400px; background: #ddd; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>دليل خدمات مدينتي</h1>
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="ابحث عن خدمة...">
+            <button onclick="searchService()">بحث</button>
+        </div>
+    </header>
+
+    <section id="categories">
+        <div class="category" onclick="filterCategory('مطاعم')">مطاعم</div>
+        <div class="category" onclick="filterCategory('صيدليات')">صيدليات</div>
+        <div class="category" onclick="filterCategory('محلات')">محلات</div>
+        <div class="category" onclick="filterCategory('خدمات منزلية')">خدمات منزلية</div>
+    </section>
+
+    <section id="featured">
+        <h2>الخدمات المميزة</h2>
+        <div id="featuredServices"></div>
+    </section>
+
+    <section id="map">
+        <h2>خريطة الخدمات</h2>
+        <div id="mapContainer"></div>
+    </section>
+
+    <script>
+        // بيانات الخدمات
+        const services = [
+            { name: "مطعم النجاح", category: "مطاعم", lat: 32.887, lng: 13.191 },
+            { name: "صيدلية المدينة", category: "صيدليات", lat: 32.889, lng: 13.195 },
+            { name: "محل الأصدقاء", category: "محلات", lat: 32.885, lng: 13.193 },
+            { name: "سباك سريع", category: "خدمات منزلية", lat: 32.886, lng: 13.197 }
+        ];
+
+        // عرض الخدمات المميزة
+        const featuredContainer = document.getElementById('featuredServices');
+        function displayServices(list) {
+            featuredContainer.innerHTML = '';
+            list.forEach(service => {
+                const div = document.createElement('div');
+                div.className = 'serviceCard';
+                div.textContent = service.name + " (" + service.category + ")";
+                featuredContainer.appendChild(div);
+            });
+        }
+        displayServices(services);
+
+        // البحث
+        function searchService() {
+            const query = document.getElementById('searchInput').value.trim();
+            const results = services.filter(s => s.name.includes(query) || s.category.includes(query));
+            if(results.length > 0) {
+                displayServices(results);
+            } else {
+                alert("لا توجد نتائج لهذا البحث");
+            }
+        }
+
+        // تصفية حسب الفئة
+        function filterCategory(category) {
+            const filtered = services.filter(s => s.category === category);
+            displayServices(filtered);
+        }
+
+        // إعداد خريطة Google
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("mapContainer"), {
+                center: { lat: 32.887, lng: 13.191 },
+                zoom: 14,
+            });
+
+            services.forEach(service => {
+                new google.maps.Marker({
+                    position: { lat: service.lat, lng: service.lng },
+                    map,
+                    title: service.name
+                });
+            });
+        }
+    </script>
+    <!-- رابط API لـ Google Maps (يجب استبدال YOUR_API_KEY بمفتاحك الخاص) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+</body>
+</html>
